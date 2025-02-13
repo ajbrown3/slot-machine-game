@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Machine</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .slot-container {
+            display: flex;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 20px;
+        }
+        .slot {
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            margin: 10px;
+            background: #f8f8f8;
+            border: 2px solid #333;
+            display: inline-block;
+        }
+        #result {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+        #spinButton {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Slot Machine</h1>
+    <div class="slot-container">
+        <div id="slot1" class="slot">❓</div>
+        <div id="slot2" class="slot">❓</div>
+        <div id="slot3" class="slot">❓</div>
+    </div>
+    <button id="spinButton">Spin 🎰</button>
+    <p id="result"></p>
+
+    <script>
+        // Slot symbols
+        const symbols = ["🍒", "🍋", "🍊", "🍉", "7️⃣"];
+
+        // Function to spin the slots
+        function spinSlots() {
+            let slot1 = symbols[Math.floor(Math.random() * symbols.length)];
+            let slot2 = symbols[Math.floor(Math.random() * symbols.length)];
+            let slot3 = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            // Display the results
+            document.getElementById("slot1").innerText = slot1;
+            document.getElementById("slot2").innerText = slot2;
+            document.getElementById("slot3").innerText = slot3;
+            
+            // Check for win condition
+            if (slot1 === slot2 && slot2 === slot3) {
+                document.getElementById("result").innerText = "🎉 You Win! 🎉";
+            } else {
+                document.getElementById("result").innerText = "Try Again!";
+            }
+        }
+
+        // Event listener for the button
+        document.getElementById("spinButton").addEventListener("click", spinSlots);
+    </script>
+</body>
+</html>
+
